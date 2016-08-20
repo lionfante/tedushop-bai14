@@ -7,13 +7,13 @@ namespace TeduShop.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AddErrorTable : IMigrationMetadata
+    public sealed partial class ChangeKey : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddErrorTable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ChangeKey));
         
         string IMigrationMetadata.Id
         {
-            get { return "201605070205448_AddErrorTable"; }
+            get { return "201608200415507_ChangeKey"; }
         }
         
         string IMigrationMetadata.Source

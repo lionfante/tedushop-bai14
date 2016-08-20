@@ -23,7 +23,7 @@ namespace TeduShop.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            Database.SetInitializer<TeduShopDbContext>(null);
+            //Database.SetInitializer<TeduShopDbContext>(null);
         }
     }
 }
