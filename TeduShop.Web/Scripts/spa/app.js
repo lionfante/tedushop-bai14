@@ -6,15 +6,16 @@ var myApp = angular.module("myModule", []);
 //Khởi tạo controller
 myApp.controller("schoolController", schoolController);
 
+myApp.service("ValidatorService", ValidatorService);
 
-myApp.service("Validator", Validator);
+myApp.directive("teduShopDirective", teduShopDirective);
 
-schoolController.$inject = ['$scope', 'Validator'];
+schoolController.$inject = ['$scope', 'ValidatorService'];
 
 //declare
-function schoolController($scope, Validator) {
+function schoolController($scope, ValidatorService) {
     $scope.checkNumber = function () {
-        $scope.message = Validator.checkNumber($scope.num);
+        $scope.message = ValidatorService.checkNumber($scope.num);
     }
     $scope.num = 1;
     
@@ -22,7 +23,7 @@ function schoolController($scope, Validator) {
 //myController.$inject = ['$scope'];
 
 //Khai báo service (sau này tách riêng ra 1 file script servier riêng)
-function Validator($window) {
+function ValidatorService($window) {
     return {
         checkNumber: checkNumber
     }
@@ -35,6 +36,14 @@ function Validator($window) {
             //$window.alert("This is odd");
             return "This is odd";
         }
+    }
+}
+
+function teduShopDirective() {
+    return {
+        //template: "<h1>This is my first custom directive</h1>"
+        restrict: "A",
+        templateUrl: "/Scripts/spa/teduShopDirective.html"
     }
 }
 
