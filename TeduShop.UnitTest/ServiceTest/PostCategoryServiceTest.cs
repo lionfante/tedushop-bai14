@@ -21,7 +21,7 @@ namespace TeduShop.UnitTest.ServiceTest
         {
             _mockRepository = new Mock<IPostCategoryRepository>();
             _mockUnitOfWork = new Mock<IUnitOfWork>();
-            _categoryService = new PostCategoryService(_mockRepository.Object, _mockUnitOfWork.Object);
+            _categoryService = new ProductCategoryService(_mockRepository.Object, _mockUnitOfWork.Object);
             _listCategory = new List<PostCategory>()
             {
                 new PostCategory() {ID =1 ,Name="DM1",Status=true },
