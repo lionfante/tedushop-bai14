@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using TeduShop.Model.Models;
 
 namespace TeduShop.Web.Models
@@ -21,5 +22,22 @@ namespace TeduShop.Web.Models
         public bool? HomeFlag { set; get; }
 
         public virtual IEnumerable<Product> Products { set; get; }
+
+        public DateTime? CreatedDate { set; get; }
+
+
+        public string CreatedBy { set; get; }
+
+        public DateTime? UpdatedDate { set; get; }
+
+
+        public string UpdatedBy { set; get; }
+
+
+        public string MetaKeyword { set; get; }
+
+        public string MetaDescription { set; get; }
+
+        public bool Status { set; get; }
     }
 }

@@ -30,26 +30,22 @@
                 <div class="col-md-12">
                     <table class="table table-bordered">
                         <tr>
-                            <th style="width: 10px">ID</th>
-                            <th>Tên danh mục</th>
-                            <th>Ngày tạo</th>
-                            <th style="width: 40px">Trạng thái</th>
-                        </tr>
-                        <tr>
-                            <td>1.</td>
-                            <td>Update software</td>
-                            <td>
-                                <div class="progress progress-xs">
-                                    <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                                </div>
-                            </td>
-                            <td><span class="badge bg-red">55%</span></td>
+                            <th style="width: 5%">ID</th>
+                            <th style="width: 60%">Tên danh mục</th>
+                            <th style="width: 15%">Ngày tạo</th>
+                            <th style="width: 10%">Trạng thái</th>
+                            <th style="width: 10%">Thao tác</th>
                         </tr>
                         <tr ng-repeat="item in productCategories">
                             <td>{{item.ID}}</td>
                             <td>{{item.Name}}</td>
-                            <td>{{item.CreatedDate}}</td>
-                            <td><span class="badge bg-red">{{item.Status}}</span></td>
+                            <td>{{item.CreatedDate | date: 'dd/MM/yyyy hh:mm:ss'}}</td>
+                            <td><span ng-class="{'badge bg-red':item.Status==false, 'badge bg-green': item.Status==true}">
+                                {{item.Status | statusFilter}}</span></td>
+                            <td>
+                                <button class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></button>
+                                <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                            </td>
                         </tr>
                     </table>
                 </div>
