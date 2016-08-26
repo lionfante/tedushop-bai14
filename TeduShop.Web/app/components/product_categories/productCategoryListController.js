@@ -11,7 +11,7 @@
 
         function getProductCategories() {
             apiService.get("/api/productcategory/getall", null, function (result) {
-                $scope.productCategories = result;
+                $scope.productCategories = result.data;
             }, function () {
                 console.log('Load productcategory failed');
             });
