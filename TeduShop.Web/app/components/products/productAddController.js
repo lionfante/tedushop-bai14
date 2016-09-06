@@ -38,6 +38,14 @@
                 });
         }
 
+        $scope.ChooseImage = function () {
+            var ckfinder = new CKFinder();
+            ckfinder.selectActionFunction = function (fileUrl) {
+                $scope.product.Image = fileUrl;
+            }
+            ckfinder.popup();
+        }
+
         getListProductCategories();
     }
  
