@@ -1,9 +1,9 @@
 ﻿(function (app) {
     app.controller('productAddController', productAddController);
 
-    productAddController.$inject = ['$scope','apiService', 'notificationService', '$state'];
+    productAddController.$inject = ['$scope','apiService', 'notificationService', '$state', 'commonService'];
 
-    function productAddController($scope, apiService, notificationService, $state) {
+    function productAddController($scope, apiService, notificationService, $state, commonService) {
         $scope.productCategories = [];
 
         $scope.getListProductCategories = getListProductCategories;
@@ -25,6 +25,12 @@
             CreatedDate: new Date(),
             Status: true,
         };
+
+        $scope.GetSeoTitle = GetSeoTitle;
+
+        function GetSeoTitle() {
+            $scope.product.Alias = commonService.getSeoTitle($scope.product.Name);
+        }
 
         $scope.AddProduct = AddProduct;
 

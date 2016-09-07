@@ -43,10 +43,12 @@ namespace TeduShop.Web.Infrastructure.Extensions
             product.HomeFlag = productVm.HomeFlag;
             product.HotFlag = productVm.HotFlag;
             product.Price = productVm.Price;
-            product.PromotionPrice = product.PromotionPrice;
+            product.PromotionPrice = productVm.PromotionPrice;
             product.Warranty = productVm.Warranty;
-            product.Content = product.Content;
+            product.Content = productVm.Content;
             product.ViewCount = productVm.ViewCount;
+
+            product.Tags = productVm.Tags;
 
             product.CreatedDate = productVm.CreatedDate;
             product.CreatedBy = productVm.CreatedBy;
