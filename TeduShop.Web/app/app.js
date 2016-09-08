@@ -10,11 +10,23 @@
     config.$inject = ['$stateProvider', '$urlRouterProvider'];
 
     function config($sateProvider, $urlRouterProvider) {
-        $sateProvider.state('home', {
-            url: "/admin",
-            templateUrl: "/app/components/home/homeView.html",
-            controller: "homeController"
-        });
-        $urlRouterProvider.otherwise('/admin'); //Phương thức nếu không phải trường hợp nào sẽ trả về 'admin'
+        $sateProvider
+            .state('base', {
+                url: '',
+                templateUrl: '/app/shared/views/baseView.html',
+                abstract: true, //template chính , các template con kế thừa từ đây
+            })
+            .state('login', {
+                url: "/login",
+                templateUrl: "/app/components/login/loginView.html",
+                controller: "loginController"
+            })
+            .state('home', {
+                url: "/admin",
+                parent: 'base',
+                templateUrl: "/app/components/home/homeView.html",
+                controller: "homeController"
+            });
+        $urlRouterProvider.otherwise('/login'); //Phương thức nếu không phải trường hợp nào sẽ trả về 'login'
     }
 })();
