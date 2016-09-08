@@ -15,6 +15,7 @@ using System.Web.Script.Serialization;
 namespace TeduShop.Web.Api
 {
     [RoutePrefix("api/product")]
+    [Authorize]
     public class ProductController : ApiControllerBase
     {
         #region Initialize
@@ -86,6 +87,7 @@ namespace TeduShop.Web.Api
                     var newProduct = new Product();
                     newProduct.UpdateProduct(productVm);
                     newProduct.CreatedDate = DateTime.Now;
+                    newProduct.CreatedBy = User.Identity.Name;
 
                     _productService.Add(newProduct);
                     _productService.Save();
@@ -115,6 +117,7 @@ namespace TeduShop.Web.Api
                     var dbProduct = _productService.GetById(productVm.ID);
                     dbProduct.UpdateProduct(productVm);
                     dbProduct.UpdatedDate = DateTime.Now;
+                    dbProduct.UpdatedBy = User.Identity.Name;
 
                     _productService.Update(dbProduct);
                     _productService.Save();
