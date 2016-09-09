@@ -26,5 +26,23 @@ namespace TeduShop.Web.Controllers
 
             return View();
         }
+
+        [ChildActionOnly]   //Không được gọi trực tiếp, chỉ được nhúng
+        public ActionResult Footer()
+        {
+            return PartialView("/Views/Shared/_PartialFooter.cshtml");
+        }
+
+        [ChildActionOnly]
+        public ActionResult Header()
+        {
+            return PartialView("/Views/Shared/_PartialHeader.cshtml");
+        }
+
+        [ChildActionOnly]
+        public ActionResult Category()
+        {
+            return PartialView("/Views/Shared/_PartialCategory.cshtml");
+        }
     }
 }

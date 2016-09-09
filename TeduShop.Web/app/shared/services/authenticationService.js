@@ -1,13 +1,15 @@
 ﻿(function (app) {
     'use strict';
-    app.service('authenticationService', ['$http', '$q', '$window','authData',
-    function ($http, $q, $window, authData) {
+    app.service('authenticationService', ['$http', '$q', '$window', 'authData','localStorageService',
+    function ($http, $q, $window, authData, localStorageService) {
             var tokenInfo;
 
             this.setTokenInfo = function (data) {
                 tokenInfo = data;
                 //$window.sessionStorage["TokenInfo"] = JSON.stringify(tokenInfo);
                 $window.localStorage["TokenInfo"] = JSON.stringify(tokenInfo);
+                //localStorageService.set('authorizationData', JSON.stringify(tokenInfo));
+
             }
 
             this.getTokenInfo = function () {
@@ -18,14 +20,15 @@
                 tokenInfo = null;
                 //$window.sessionStorage["TokenInfo"] = null;
                 $window.localStorage["TokenInfo"] = null;
+                //localStorageService.remove('authorizationData');
             }
 
             this.init = function () {
                 if ($window.localStorage["TokenInfo"]) {
                     //tokenInfo = JSON.parse($window.sessionStorage["TokenInfo"]);
                     tokenInfo = JSON.parse($window.localStorage["TokenInfo"]);
-                    //authData.authenticationData.IsAuthenticated = true;
-                    //authData.authenticationData.userName = tokenInfo.userName;
+                    authData.authenticationData.IsAuthenticated = true;
+                    authData.authenticationData.userName = tokenInfo.userName;
                 }
             }
 
