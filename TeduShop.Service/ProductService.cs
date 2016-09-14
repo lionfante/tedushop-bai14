@@ -22,6 +22,9 @@ namespace TeduShop.Service
 
         IEnumerable<Product> GetAll(string keyword);
 
+        IEnumerable<Product> GetLastest(int top);
+        IEnumerable<Product> GetHotProduct(int top);
+
         IEnumerable<Product> GetAllByCategoryId(int categoryId);
 
         Product GetById(int id);
@@ -133,6 +136,16 @@ namespace TeduShop.Service
                 
             }
             
+        }
+
+        public IEnumerable<Product> GetLastest(int top)
+        {
+            return _productRepository.GetMulti(x => x.Status).OrderByDescending(x => x.CreatedDate).Take(top);
+        }
+
+        public IEnumerable<Product> GetHotProduct(int top)
+        {
+            return _productRepository.GetMulti(x => x.Status && x.HotFlag == true).OrderByDescending(x => x.CreatedDate).Take(top);
         }
     }
 }
