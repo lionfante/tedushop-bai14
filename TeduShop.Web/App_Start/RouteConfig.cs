@@ -24,9 +24,9 @@ namespace TeduShop.Web
             );
 
             routes.MapRoute(
-                name: "Product_Category",
+                name: "ProductCategory",
                 url: "{alias}.pc-{id}.html",
-                defaults: new { controller = "ProductCategory", action = "Category", id = UrlParameter.Optional },
+                defaults: new { controller = "Product", action = "Category", id = UrlParameter.Optional },
                 namespaces: new string[] { "TeduShop.Web.Controllers" }
             );
 

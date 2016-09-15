@@ -27,8 +27,8 @@
                 if ($window.localStorage["TokenInfo"]) {
                     //tokenInfo = JSON.parse($window.sessionStorage["TokenInfo"]);
                     tokenInfo = JSON.parse($window.localStorage["TokenInfo"]);
-                    authData.authenticationData.IsAuthenticated = true;
-                    authData.authenticationData.userName = tokenInfo.userName;
+                    //authData.authenticationData.IsAuthenticated = true;
+                    //authData.authenticationData.userName = tokenInfo.userName;
                 }
             }
 

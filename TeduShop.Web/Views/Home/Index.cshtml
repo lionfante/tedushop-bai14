@@ -9,8 +9,40 @@
         $('.example1').wmuSlider();
     </script>
 }
-@section homeProducts{
-    <!---->
+<div class="shoes-grid">
+
+    <div class="wrap-in">
+        <div class="wmuSlider example1 slide-grid">
+            <div class="wmuSliderWrapper">
+                @foreach (var slide in Model.Slides)
+                    {
+                    <article style="position: absolute; width: 100%; opacity: 0;">
+                        <div class="banner-matter">
+                            <div class="col-md-5 banner-bag">
+                                <img class="img-responsive " src="@slide.Image" alt=" " />
+                            </div>
+                            <div class="col-md-7 banner-off">
+                                @Html.Raw(slide.Content)
+                            </div>
+
+                            <div class="clearfix"> </div>
+                        </div>
+
+                    </article>
+                    }
+
+
+            </div>
+
+            <ul class="wmuSliderPagination">
+                @for (int i = 0; i < Model.Slides.Count(); i++)
+        {
+        <li><a href="#" class="">i</a></li>
+        }
+            </ul>
+
+        </div>
+    </div>
     <div class="shoes-grid-left">
         <a href="single.html">
             <div class="col-md-6 con-sed-grid">
@@ -125,38 +157,5 @@
         }
         <div class="clearfix"> </div>
     </div>
-}
-<div class="shoes-grid">
-    <a href="single.html">
-        <div class="wrap-in">
-            <div class="wmuSlider example1 slide-grid">
-                <div class="wmuSliderWrapper">
-                    @foreach (var slide in Model.Slides)
-                    {
-                        <article style="position: absolute; width: 100%; opacity: 0;">
-                            <div class="banner-matter">
-                                <div class="col-md-5 banner-bag">
-                                    <img class="img-responsive " src="@slide.Image" alt=" " />
-                                </div>
-                                <div class="col-md-7 banner-off">
-                                    @Html.Raw(slide.Content)
-                                </div>
-
-                                <div class="clearfix"> </div>
-                            </div>
-
-                        </article>
-                    }
-
-
-                </div>
-    </a>
-    <ul class="wmuSliderPagination">
-        @for (int i = 0; i < Model.Slides.Count(); i++)
-        {
-            <li><a href="#" class="">i</a></li>
-        }
-    </ul>
-
 </div>
 
