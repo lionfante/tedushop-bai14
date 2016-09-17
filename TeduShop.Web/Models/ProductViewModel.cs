@@ -31,6 +31,8 @@ namespace TeduShop.Web.Models
 
         public string Tags { set; get; }
 
+        public int Quantity { set; get; }
+
         public DateTime? CreatedDate { set; get; }
 
         public string CreatedBy { set; get; }
@@ -44,6 +46,7 @@ namespace TeduShop.Web.Models
         public string MetaDescription { set; get; }
 
         public bool Status { set; get; }
+
 
         public virtual ProductCategory ProductCategory { set; get; }
     }

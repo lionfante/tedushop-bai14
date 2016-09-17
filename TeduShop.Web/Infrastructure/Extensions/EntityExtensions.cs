@@ -49,6 +49,7 @@ namespace TeduShop.Web.Infrastructure.Extensions
             product.ViewCount = productVm.ViewCount;
 
             product.Tags = productVm.Tags;
+            product.Quantity = productVm.Quantity;
 
             product.CreatedDate = productVm.CreatedDate;
             product.CreatedBy = productVm.CreatedBy;
