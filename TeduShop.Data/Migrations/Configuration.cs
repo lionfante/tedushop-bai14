@@ -19,7 +19,8 @@
         protected override void Seed(TeduShop.Data.TeduShopDbContext context)
         {
             //CreateSlide(context);
-            CreatePage(context);
+            //CreatePage(context);
+            CreateContactDetail(context);
         }
 
         private void CreateUser(TeduShopDbContext context)
@@ -144,6 +145,27 @@
                 context.SaveChanges();
             }
             
+        }
+
+        private void CreateContactDetail(TeduShopDbContext context)
+        {
+            if(context.ContactDetails.Count() == 0)
+            {
+                var page = new TeduShop.Model.Models.ContactDetails()
+                {
+                    Name = "Shop thời trang TEDU",
+                    Address = "49 Trần Văn Đang",
+                    Email = "lethienphu.1404@gmail.com",
+                    Lat = 10.78345477892738,
+                    Lng = 106.67793610581975,
+                    Phone = "01677 011 757",
+                    Website = "http://lethienphu.com.vn",
+                    Order = "",
+                    Status = true
+                };
+                context.ContactDetails.Add(page);
+                context.SaveChanges();
+            }
         }
     }
 }

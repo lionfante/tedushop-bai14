@@ -84,8 +84,17 @@
     <Compile Include="Migrations\201609170635142_AddMoreQuantity.Designer.cs">
       <DependentUpon>201609170635142_AddMoreQuantity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201609190456504_ContactDetails.cs" />
+    <Compile Include="Migrations\201609190456504_ContactDetails.Designer.cs">
+      <DependentUpon>201609190456504_ContactDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609190714118_fix_status_of_ContactDetails.cs" />
+    <Compile Include="Migrations\201609190714118_fix_status_of_ContactDetails.Designer.cs">
+      <DependentUpon>201609190714118_fix_status_of_ContactDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ContactDetailRepository.cs" />
     <Compile Include="Repositories\ErrorRepository.cs" />
     <Compile Include="Repositories\FooterRepository.cs" />
     <Compile Include="Repositories\MenuGroupRepository.cs" />
@@ -135,6 +144,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201609170635142_AddMoreQuantity.resx">
       <DependentUpon>201609170635142_AddMoreQuantity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609190456504_ContactDetails.resx">
+      <DependentUpon>201609190456504_ContactDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609190714118_fix_status_of_ContactDetails.resx">
+      <DependentUpon>201609190714118_fix_status_of_ContactDetails.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
