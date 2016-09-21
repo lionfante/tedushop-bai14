@@ -13,6 +13,12 @@ namespace TeduShop.Web
             routes.IgnoreRoute("{*botdetect}",
               new { botdetect = @"(.*)BotDetectCaptcha\.ashx" });
 
+            routes.MapRoute(
+                name: "Checkout",
+                url: "thanh-toan.html",
+                defaults: new { controller = "ShoppingCart", action = "Checkout", id = UrlParameter.Optional },
+                namespaces: new string[] { "TeduShop.Web.Controllers" }
+            );
 
             routes.MapRoute(
                 name: "Cart",

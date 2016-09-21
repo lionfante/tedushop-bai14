@@ -22,6 +22,8 @@ namespace TeduShop.Model.Models
 
         public DateTime? BirthDay { set; get; }
 
+        public virtual IEnumerable<Order> Orders { set; get; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType

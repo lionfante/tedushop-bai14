@@ -110,5 +110,20 @@ namespace TeduShop.Web.Infrastructure.Extensions
             feedback.Status = feedbackVm.Status;
             feedback.CreatedDate = DateTime.Now;
         }
+
+        public static void UpdateOrder(this Order order, OrderViewModel orderVm)
+        {
+            order.CustomerName = orderVm.CustomerName;
+            order.CustomerEmail = orderVm.CustomerEmail;
+            order.CustomerAddress = orderVm.CustomerAddress;
+            order.CustomerMobile = orderVm.CustomerMobile;
+            order.CustomerMessage = orderVm.CustomerMessage;
+            order.PaymentMethod = orderVm.PaymentMethod;
+            order.CreatedDate = DateTime.Now;
+            order.CreatedBy = orderVm.CreatedBy;
+            order.Status = orderVm.Status;
+            order.CustomerId = orderVm.CustomerId;
+            order.OrderDetails = AutoMapper.Mapper.Map<IEnumerable<OrderDetailViewModel>, IEnumerable<OrderDetail>>(orderVm.OrderDetail);
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,8 @@ using System.Web.Script.Serialization;
 using TeduShop.Common;
 using TeduShop.Model.Models;
 using TeduShop.Service;
+using TeduShop.Web.App_Start;
+using TeduShop.Web.Infrastructure.Extensions;
 using TeduShop.Web.Models;
 
 namespace TeduShop.Web.Controllers
@@ -15,9 +18,15 @@ namespace TeduShop.Web.Controllers
     public class ShoppingCartController : Controller
     {
         IProductService _productService;
-        public ShoppingCartController(IProductService productService)
+        IOrderService _orderService;
+        private ApplicationUserManager _userManager;
+        public ShoppingCartController(IProductService productService, 
+            IOrderService orderService,
+            ApplicationUserManager userManager)
         {
             _productService = productService;
+            _orderService = orderService;
+            _userManager = userManager;
         }
         // GET: ShoppingCart
         public ActionResult Index()
@@ -27,6 +36,15 @@ namespace TeduShop.Web.Controllers
                 Session[CommonConstants.SessionCart] = new List<ShoppingCartViewModel>();
             }
             
+            return View();
+        }
+
+        public ActionResult CheckOut()
+        {
+            if(Session[CommonConstants.SessionCart] == null)
+            {
+                return Redirect("/gio-hang.html");
+            }
             return View();
         }
 
@@ -69,6 +87,51 @@ namespace TeduShop.Web.Controllers
             }
             var cart = (List<ShoppingCartViewModel>)Session[CommonConstants.SessionCart];
             return Json(new { data = cart, status = true}, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult GetUser()
+        {
+            if (Request.IsAuthenticated)
+            {
+                var userId = User.Identity.GetUserId();
+                var user = _userManager.FindById(userId);
+                return Json(new { data = user, status = true});
+            }else
+            {
+                return Json(new {status = false });
+            }
+            
+        }
+
+        [HttpPost]
+        public JsonResult CreateOrder(string orderViewModel)
+        {
+            var orderVm = new JavaScriptSerializer().Deserialize<OrderViewModel>(orderViewModel);
+            var orderNew = new Order();
+            orderNew.UpdateOrder(orderVm);
+
+            if (Request.IsAuthenticated)
+            {
+                var userId = User.Identity.GetUserId();
+                orderNew.CustomerId = userId;
+                orderNew.CreatedBy = User.Identity.GetUserName();
+            }
+
+            var cart = (List<ShoppingCartViewModel>)Session[CommonConstants.SessionCart];
+            List<OrderDetail> orderDetails = new List<OrderDetail>();
+            foreach (var item in cart)
+            {
+                var detail = new OrderDetail();
+                detail.ProductID = item.ProductId;
+                detail.Quantitty = item.Quantity;
+                orderDetails.Add(detail);
+            }
+            
+            _orderService.Create(orderNew, orderDetails);
+            return Json(new { status = true });
+            
+
         }
 
         [HttpPost]
