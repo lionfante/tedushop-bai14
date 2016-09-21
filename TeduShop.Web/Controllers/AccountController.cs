@@ -13,6 +13,8 @@ using Microsoft.AspNet.Identity.Owin;
 using System.Threading.Tasks;
 using BotDetect.Web.Mvc;
 using TeduShop.Common;
+using Microsoft.Owin.Security;
+using System.Security.Claims;
 
 namespace TeduShop.Web.Controllers
 {
@@ -52,8 +54,39 @@ namespace TeduShop.Web.Controllers
         }
 
         // GET: Account
-        public ActionResult Login()
+        public ActionResult Login(string returnUrl)
         {
+            ViewBag.ReturnUrl = returnUrl;
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Login(LoginViewModel loginViewModel, string returnUrl)
+        {
+            if (ModelState.IsValid)
+            {
+                ApplicationUser user = await UserManager.FindAsync(loginViewModel.UserName, loginViewModel.Password);
+                if(user != null)
+                {
+                    IAuthenticationManager authenticationManager = HttpContext.GetOwinContext().Authentication;
+                    authenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
+                    ClaimsIdentity identity = _userManager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
+                    AuthenticationProperties props = new AuthenticationProperties();
+                    props.IsPersistent = loginViewModel.RememberMe;
+                    authenticationManager.SignIn(props, identity);
+                    if (Url.IsLocalUrl(returnUrl))
+                    {
+                        return Redirect(returnUrl);
+                    }else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+            }else
+            {
+                ModelState.AddModelError("", "Tài khoản hoặc mật khẩu không đúng.");
+            }
+            ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 
@@ -109,6 +142,15 @@ namespace TeduShop.Web.Controllers
             }
             
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult LogOut()
+        {
+            IAuthenticationManager authenticationManager = HttpContext.GetOwinContext().Authentication;
+            authenticationManager.SignOut();
+            return RedirectToAction("Index", "Home");
         }
     }
 }
