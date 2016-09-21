@@ -3,6 +3,7 @@ using TeduShop.Model.Models;
 
 namespace TeduShop.Web.Models
 {
+    [Serializable]
     public class ProductViewModel
     {
         public int ID { set; get; }
