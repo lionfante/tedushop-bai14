@@ -125,5 +125,27 @@ namespace TeduShop.Web.Infrastructure.Extensions
             order.CustomerId = orderVm.CustomerId;
             order.OrderDetails = AutoMapper.Mapper.Map<IEnumerable<OrderDetailViewModel>, IEnumerable<OrderDetail>>(orderVm.OrderDetail);
         }
+
+        public static void UpdateApplicationGroup(this ApplicationGroup appGroup, ApplicationGroupViewModel appGroupViewModel)
+        {
+            appGroup.ID = appGroupViewModel.ID;
+            appGroup.Name = appGroupViewModel.Name;
+        }
+
+        public static void UpdateApplicationRole(this ApplicationRole appRole, ApplicationRoleViewModel appRoleVm, string action="add")
+        {
+            if (action == "update")
+            {
+                appRole.Id = appRoleVm.Id;
+                appRole.Name = appRoleVm.Name;
+                appRole.Description = appRoleVm.Description;
+            }
+            else
+            {
+                appRole.Id = Guid.NewGuid().ToString();
+                appRole.Name = appRoleVm.Name;
+                appRole.Description = appRoleVm.Description;
+            }
+        }
     }
 }

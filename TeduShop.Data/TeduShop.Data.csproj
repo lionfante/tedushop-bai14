@@ -100,8 +100,24 @@
     <Compile Include="Migrations\201609210702317_add customerid for order.Designer.cs">
       <DependentUpon>201609210702317_add customerid for order.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201609260221113_RenameTableIdentity.cs" />
+    <Compile Include="Migrations\201609260221113_RenameTableIdentity.Designer.cs">
+      <DependentUpon>201609260221113_RenameTableIdentity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609290335468_addRoleGroup.cs" />
+    <Compile Include="Migrations\201609290335468_addRoleGroup.Designer.cs">
+      <DependentUpon>201609290335468_addRoleGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609290339431_update Key for roleId.cs" />
+    <Compile Include="Migrations\201609290339431_update Key for roleId.Designer.cs">
+      <DependentUpon>201609290339431_update Key for roleId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ApplicationGroupRepository.cs" />
+    <Compile Include="Repositories\ApplicationRoleGroupRepository.cs" />
+    <Compile Include="Repositories\ApplicationRoleRepository.cs" />
+    <Compile Include="Repositories\ApplicationUserGroupRepository.cs" />
     <Compile Include="Repositories\ContactDetailRepository.cs" />
     <Compile Include="Repositories\ErrorRepository.cs" />
     <Compile Include="Repositories\FeedbackRepository.cs" />
@@ -165,6 +181,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201609210702317_add customerid for order.resx">
       <DependentUpon>201609210702317_add customerid for order.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609260221113_RenameTableIdentity.resx">
+      <DependentUpon>201609260221113_RenameTableIdentity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609290335468_addRoleGroup.resx">
+      <DependentUpon>201609290335468_addRoleGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609290339431_update Key for roleId.resx">
+      <DependentUpon>201609290339431_update Key for roleId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
