@@ -1,7 +1,7 @@
 ﻿(function (app) {
     'use strict';
-    app.service('loginService', ['$http', '$q', 'authenticationService', 'authData',
-    function ($http, $q, authenticationService, authData) {
+    app.service('loginService', ['$http', '$q', 'authenticationService', 'authData', '$location',
+    function ($http, $q, authenticationService, authData, $location) {
         var userInfo;
         var deferred;
 
@@ -33,6 +33,9 @@
             authenticationService.removeToken();
             authData.authenticationData.IsAuthenticated = false;
             authData.authenticationData.userName = "";
+            $http.post('api/account/logout', null).success(function (response) {
+                $location.path('/login');
+            })
         }
     }]);
 })(angular.module('tedushop.common'));

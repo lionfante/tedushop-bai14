@@ -135,17 +135,26 @@ namespace TeduShop.Web.Infrastructure.Extensions
         public static void UpdateApplicationRole(this ApplicationRole appRole, ApplicationRoleViewModel appRoleVm, string action="add")
         {
             if (action == "update")
-            {
                 appRole.Id = appRoleVm.Id;
-                appRole.Name = appRoleVm.Name;
-                appRole.Description = appRoleVm.Description;
-            }
             else
-            {
                 appRole.Id = Guid.NewGuid().ToString();
-                appRole.Name = appRoleVm.Name;
-                appRole.Description = appRoleVm.Description;
-            }
+            
+            appRole.Name = appRoleVm.Name;
+            appRole.Description = appRoleVm.Description;
+        }
+
+        public static void UpdateApplicationUser(this ApplicationUser appUser, ApplicationUserViewModel appUserViewModel, string action = "add")
+        {
+            if (action == "update")
+                appUser.Id = appUserViewModel.Id;
+            else
+                appUser.Id = Guid.NewGuid().ToString();
+                
+            appUser.FullName = appUserViewModel.FullName;
+            appUser.BirthDay = appUserViewModel.BirthDay;
+            appUser.Email = appUserViewModel.Email;
+            appUser.UserName = appUserViewModel.UserName;
+            appUser.PhoneNumber = appUserViewModel.PhoneNumber;
         }
     }
 }

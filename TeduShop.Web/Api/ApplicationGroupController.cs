@@ -18,6 +18,7 @@ using TeduShop.Web.Models;
 namespace TeduShop.Web.Api
 {
     [RoutePrefix("api/applicationgroup")]
+    [Authorize]
     public class ApplicationGroupController : ApiControllerBase
     {
         IApplicationGroupService _applicationGroupService;

@@ -20,6 +20,7 @@ namespace TeduShop.Web.Mappings
             Mapper.CreateMap<ContactDetails, ContactDetailViewModel>();
             Mapper.CreateMap<ApplicationGroup, ApplicationGroupViewModel>();
             Mapper.CreateMap<ApplicationRole, ApplicationRoleViewModel>();
+            Mapper.CreateMap<ApplicationUser, ApplicationUserViewModel>();
         }
     }
 }
