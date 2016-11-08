@@ -273,6 +273,8 @@
     <Content Include="app\components\application_roles\applicationRoles.module.js" />
     <Content Include="app\components\application_users\applicationUserAddController.js" />
     <Content Include="app\components\application_users\applicationUserAddView.html" />
+    <Content Include="app\components\application_users\applicationUserEditController.js" />
+    <Content Include="app\components\application_users\applicationUserEditView.html" />
     <Content Include="app\components\application_users\applicationUserListController.js" />
     <Content Include="app\components\application_users\applicationUserListView.html" />
     <Content Include="app\components\application_users\applicationUsers.module.js" />

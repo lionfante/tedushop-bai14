@@ -15,7 +15,7 @@
             templateUrl: "/app/components/application_users/applicationUserAddView.html",
             controller: "applicationUserAddController"
         }).state("edit_application_user", {
-            url: "/edit_application_user",
+            url: "/edit_application_user/:id",
             parent: "base",
             templateUrl: "/app/components/application_users/applicationUserEditView.html",
             controller: "applicationUserEditController"

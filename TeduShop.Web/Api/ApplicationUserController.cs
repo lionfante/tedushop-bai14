@@ -101,5 +101,43 @@ namespace TeduShop.Web.Api
                 return request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             }
         }
+
+        [Route("detail/{id}")]
+        [HttpGet]
+        public HttpResponseMessage Details(HttpRequestMessage request, string id)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+
+                return request.CreateErrorResponse(HttpStatusCode.BadRequest, nameof(id) + " không có giá trị.");
+            }
+            var user = _appUserManager.FindByIdAsync(id);
+            if (user == null)
+            {
+                return request.CreateErrorResponse(HttpStatusCode.NoContent, "Không có dữ liệu");
+            }
+            else
+            {
+                var date = Convert.ToDateTime(user.Result.BirthDay).Date;
+                var applicationUserViewModel = Mapper.Map<ApplicationUser, ApplicationUserViewModel>(user.Result);
+                applicationUserViewModel.BirthDay = date;
+                var listGroup = _applicationGroupService.GetListGroupByUserId(applicationUserViewModel.Id);
+                applicationUserViewModel.Groups = Mapper.Map<IEnumerable<ApplicationGroup>, IEnumerable<ApplicationGroupViewModel>>(listGroup);
+                return request.CreateResponse(HttpStatusCode.OK, applicationUserViewModel);
+            }
+
+        }
+        //[Route("update")]
+        //[HttpPut]
+        //public async Task<HttpResponseMessage> Update(HttpRequestMessage request, ApplicationUserViewModel appUserVm)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+
+        //    }else
+        //    {
+        //        return request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+        //    }
+        //}
     }
 }

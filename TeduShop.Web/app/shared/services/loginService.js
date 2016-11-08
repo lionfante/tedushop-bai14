@@ -34,7 +34,7 @@
             authData.authenticationData.IsAuthenticated = false;
             authData.authenticationData.userName = "";
             $http.post('api/account/logout', null).success(function (response) {
-                $location.path('/login');
+                location.reload();
             })
         }
     }]);
