@@ -33,6 +33,8 @@ namespace TeduShop.Model.Models
 
         public decimal Price { set; get; }
 
+        public decimal OriginalPrice { set; get; }
+
         public decimal? PromotionPrice { set; get; }
         public int? Warranty { set; get; }
 

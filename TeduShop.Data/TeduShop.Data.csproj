@@ -112,6 +112,14 @@
     <Compile Include="Migrations\201609290339431_update Key for roleId.Designer.cs">
       <DependentUpon>201609290339431_update Key for roleId.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611080229430_ChangeOrderDetail.cs" />
+    <Compile Include="Migrations\201611080229430_ChangeOrderDetail.Designer.cs">
+      <DependentUpon>201611080229430_ChangeOrderDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611090330474_RevenuesStatistic.cs" />
+    <Compile Include="Migrations\201611090330474_RevenuesStatistic.Designer.cs">
+      <DependentUpon>201611090330474_RevenuesStatistic.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ApplicationGroupRepository.cs" />
@@ -190,6 +198,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201609290339431_update Key for roleId.resx">
       <DependentUpon>201609290339431_update Key for roleId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611080229430_ChangeOrderDetail.resx">
+      <DependentUpon>201611080229430_ChangeOrderDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611090330474_RevenuesStatistic.resx">
+      <DependentUpon>201611090330474_RevenuesStatistic.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

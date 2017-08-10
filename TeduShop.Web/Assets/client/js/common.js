@@ -51,6 +51,8 @@
                 success: function (response) {
                     if (response.status) {
                         alert('Thêm sản phẩm vào giỏ hàng thành công.');
+                    } else {
+                        alert(response.message);
                     }
                 }
             });

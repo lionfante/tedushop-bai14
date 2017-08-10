@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TeduShop.Common.ViewModels;
 using TeduShop.Data.Infrastructure;
 using TeduShop.Data.Repositories;
 using TeduShop.Model.Models;
@@ -12,6 +13,7 @@ namespace TeduShop.Service
     public interface IOrderService
     {
         bool Create(Order order, List<OrderDetail> orderDetails);
+        IEnumerable<RevenueStatisticViewModel> GetRevenueStatistic(string fromDate, string toDate);
     }
     public class OrderService : IOrderService
     {
@@ -40,7 +42,6 @@ namespace TeduShop.Service
                     orderDetail.OrderID = order.ID;
                     _orderDetailRepository.Add(orderDetail);
                 }
-                _unitOfWork.Commit();
                 return true;
             }
             catch (Exception)
@@ -48,6 +49,11 @@ namespace TeduShop.Service
                 throw;
             }
             
+        }
+
+        public IEnumerable<RevenueStatisticViewModel> GetRevenueStatistic(string fromDate, string toDate)
+        {
+            return _orderRepository.GetRevenueStatistic(fromDate, toDate);
         }
     }
 }

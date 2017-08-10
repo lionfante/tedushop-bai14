@@ -45,6 +45,8 @@ namespace TeduShop.Service
 
         IEnumerable<Product> GetListProductByTag(string tagId, int page, int pageSize, out int totalRow);
 
+        bool SellProduct(int productId, int quantity);
+
         void Save();
     }
     public class ProductService : IProductService
@@ -251,6 +253,16 @@ namespace TeduShop.Service
         public Tag GetTags(string tagId)
         {
             return _tagRepository.GetSingleByCondition(x => x.ID == tagId);
+        }
+
+        public bool SellProduct(int productId, int quantity)
+        {
+            var product = _productRepository.GetSingleById(productId);
+            if (product.Quantity < quantity)
+                return false;
+            product.Quantity -= quantity;
+            return true;
+
         }
     }
 }
